@@ -4,6 +4,7 @@ import com.example.springadmin.SpringAdminApplicationTests;
 import com.example.springadmin.model.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
@@ -54,6 +55,18 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
 
     @Test
     public void delete() {
+        Optional<User> user = userRepository.findById(2L);
 
+        user.ifPresent(selectUser -> {
+            userRepository.delete(selectUser);
+        });
+
+        Optional<User> deleteUser = userRepository.findById(2L);
+
+        if(deleteUser.isPresent()) {
+            System.out.println("데이터 존재 : " + deleteUser.get());
+        } else {
+            System.out.println("데이터 삭제 데이터 없음");
+        }
     }
 }
