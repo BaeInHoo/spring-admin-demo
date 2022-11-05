@@ -2,9 +2,10 @@ package com.example.springadmin.repository;
 
 import com.example.springadmin.SpringAdminApplicationTests;
 import com.example.springadmin.model.entity.User;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
@@ -54,8 +55,11 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
     }
 
     @Test
+    @Transactional
     public void delete() {
         Optional<User> user = userRepository.findById(2L);
+
+        Assertions.assertTrue(user.isPresent());
 
         user.ifPresent(selectUser -> {
             userRepository.delete(selectUser);
@@ -63,10 +67,6 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
 
         Optional<User> deleteUser = userRepository.findById(2L);
 
-        if(deleteUser.isPresent()) {
-            System.out.println("데이터 존재 : " + deleteUser.get());
-        } else {
-            System.out.println("데이터 삭제 데이터 없음");
-        }
+        Assertions.assertFalse(deleteUser.isPresent());
     }
 }
