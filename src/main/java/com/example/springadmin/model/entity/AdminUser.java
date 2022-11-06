@@ -4,31 +4,33 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Item {
+public class AdminUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
+    private String account;
 
-    private String name;
+    private String password;
 
-    private String title;
+    private String role;
 
-    private String content;
+    private LocalDateTime lastLoginAt;
 
-    private Integer price;
+    private LocalDateTime passwordUpdatedAt;
 
-    private String brandName;
+    private Integer loginFailCount;
 
     private LocalDateTime registeredAt;
 
@@ -41,5 +43,4 @@ public class Item {
     private LocalDateTime updatedAt;
 
     private String updatedBy;
-
 }
