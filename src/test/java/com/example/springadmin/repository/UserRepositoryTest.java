@@ -34,7 +34,9 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
     @Test
     @Transactional
     public void read(@RequestParam Long id) {
-        Optional<User> user = userRepository.findById(7L);
+
+        // select * from user where id
+        Optional<User> user = userRepository.findByAccount("TestUser03");
 
         user.ifPresent(selectUser -> {
 

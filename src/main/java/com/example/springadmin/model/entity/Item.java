@@ -23,6 +23,9 @@ public class Item {
 
     private String content;
 
+    // LAZY = select * from item where id = ?
+
+    // EAGER = 1:1
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
     private List<OrderDetail> orderDetailList;
 }
