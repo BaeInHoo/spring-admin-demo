@@ -1,6 +1,7 @@
 package com.example.springadmin.repository;
 
 import com.example.springadmin.SpringAdminApplicationTests;
+import com.example.springadmin.model.entity.Item;
 import com.example.springadmin.model.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,12 +32,17 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
     }
 
     @Test
+    @Transactional
     public void read(@RequestParam Long id) {
-        Optional<User> user = userRepository.findById(2L);
+        Optional<User> user = userRepository.findById(7L);
 
         user.ifPresent(selectUser -> {
-            System.out.println("user : " + selectUser);
-            System.out.println("email : " + selectUser.getEmail());
+
+            selectUser.getOrderDetailList().stream().forEach(detail -> {
+                Item item = detail.getItem();
+                System.out.println(detail.getItem());
+            });
+
         });
 
     }
