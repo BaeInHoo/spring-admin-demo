@@ -24,6 +24,8 @@ public class AdminUser {
 
     private String password;
 
+    private String status;
+
     private String role;
 
     private LocalDateTime lastLoginAt;
