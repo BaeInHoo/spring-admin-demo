@@ -17,16 +17,6 @@ class OrderDetailRepositoryTest extends SpringAdminApplicationTests {
 
     @Test
     public void create() {
-        OrderDetail orderDetail = new OrderDetail();
-
-        orderDetail.setOrderAt(LocalDateTime.now());
-
-//        orderDetail.setUser(7L);
-
-//        orderDetail.setItemId(1L);
-
-        OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
-        Assertions.assertNotNull(newOrderDetail);
 
     }
 
