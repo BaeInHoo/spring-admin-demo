@@ -35,8 +35,6 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
 
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
