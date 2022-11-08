@@ -1,9 +1,7 @@
 package com.example.springadmin.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.Accessors;
 import net.bytebuddy.asm.Advice;
 import org.hibernate.criterion.Order;
 import org.springframework.data.annotation.CreatedBy;
@@ -22,6 +20,8 @@ import java.util.List;
 @Entity
 @ToString(exclude = {"orderGroupList"})
 @EntityListeners(AuditingEntityListener.class)
+@Builder
+@Accessors(chain = true)
 public class User {
 
     @Id

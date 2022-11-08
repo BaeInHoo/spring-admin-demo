@@ -36,6 +36,13 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
 
+        User u = User.builder()
+                .account(account)
+                .password(password)
+                .status(status)
+                .email(email)
+                .build();
+
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
     }
@@ -45,6 +52,10 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
     public void read() {
 
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+
+        user.setEmail("")
+                .setPhoneNumber("")
+                .setStatus("");
 
         user.getOrderGroupList().stream().forEach(orderGroup -> {
 
@@ -77,7 +88,7 @@ public class UserRepositoryTest extends SpringAdminApplicationTests {
         user.ifPresent(selectUser -> {
             selectUser.setAccount("PPP");
             selectUser.setUpdatedAt(LocalDateTime.now());
-            selectUser.setUpdateBy("update method()");
+//            selectUser.setUpdateBy("update method()");
 
             userRepository.save(selectUser);
         });

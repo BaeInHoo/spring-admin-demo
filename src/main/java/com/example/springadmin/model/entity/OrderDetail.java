@@ -1,9 +1,7 @@
 package com.example.springadmin.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.Accessors;
 import net.bytebuddy.asm.Advice;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -21,6 +19,8 @@ import java.time.LocalDateTime;
 @Entity
 @ToString(exclude = {"orderGroup", "item"})
 @EntityListeners(AuditingEntityListener.class)
+@Builder
+@Accessors(chain = true)
 public class OrderDetail {
 
     @Id
