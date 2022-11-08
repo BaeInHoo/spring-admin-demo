@@ -3,6 +3,7 @@ package com.example.springadmin.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import net.bytebuddy.asm.Advice;
 import org.hibernate.criterion.Order;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString(exclude = {"orderGroupList"})
 public class User {
 
     @Id
@@ -41,4 +43,8 @@ public class User {
     private LocalDateTime updatedAt;
 
     private String updateBy;
+
+    // User 1 : N OrderGroup
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<OrderGroup> orderGroupList;
 }
