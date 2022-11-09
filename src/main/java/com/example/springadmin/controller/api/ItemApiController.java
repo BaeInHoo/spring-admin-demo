@@ -4,7 +4,9 @@ import com.example.springadmin.controller.ifs.CrudInterface;
 import com.example.springadmin.model.network.Header;
 import com.example.springadmin.model.network.request.ItemApiRequest;
 import com.example.springadmin.model.network.response.ItemApiResponse;
+import com.example.springadmin.service.ItemApiLogicService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/item")
 public class ItemApiController implements CrudInterface<ItemApiRequest, ItemApiResponse> {
 
+    @Autowired
+    private ItemApiLogicService itemApiLogicService;
+
     @Override
     @PostMapping("")    // /api/item
     public Header<ItemApiResponse> create(@RequestBody Header<ItemApiRequest> request) {
-        return null;
+        return itemApiLogicService.create(request);
     }
 
     @Override
