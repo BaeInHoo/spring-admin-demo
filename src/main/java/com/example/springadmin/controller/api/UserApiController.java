@@ -1,13 +1,17 @@
 package com.example.springadmin.controller.api;
 
 import com.example.springadmin.controller.ifs.CrudInterface;
+import com.example.springadmin.model.entity.User;
 import com.example.springadmin.model.network.Header;
 import com.example.springadmin.model.network.request.UserApiRequest;
 import com.example.springadmin.model.network.response.UserApiResponse;
+import com.example.springadmin.repository.UserRepository;
 import com.example.springadmin.service.UserApiLogicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -16,6 +20,7 @@ public class UserApiController implements CrudInterface<UserApiRequest, UserApiR
 
     @Autowired
     private UserApiLogicService userApiLogicService;
+
 
     @Override
     @PostMapping("")    // /api/user
@@ -34,8 +39,11 @@ public class UserApiController implements CrudInterface<UserApiRequest, UserApiR
     @Override
     @PutMapping("")     // /api/user
     public Header<UserApiResponse> update(@RequestBody Header<UserApiRequest> request) {
-        return null;
+
+        return userApiLogicService.update(request);
+
     }
+
 
     @Override
     @DeleteMapping("{id}")  // /api/user/{id}

@@ -28,4 +28,6 @@ public class UserApiResponse {
     private LocalDateTime registeredAt;
 
     private LocalDateTime unregisteredAt;
+
+
 }
