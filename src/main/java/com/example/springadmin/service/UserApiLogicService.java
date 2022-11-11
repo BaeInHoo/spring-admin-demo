@@ -3,8 +3,8 @@ package com.example.springadmin.service;
 import com.example.springadmin.controller.ifs.CrudInterface;
 import com.example.springadmin.model.entity.User;
 import com.example.springadmin.model.network.Header;
-import com.example.springadmin.model.network.request.ItemApiRequest;
 import com.example.springadmin.model.network.request.UserApiRequest;
+import com.example.springadmin.model.network.response.ItemApiResponse;
 import com.example.springadmin.model.network.response.UserApiResponse;
 import com.example.springadmin.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
     }
 
     @Override
-    public Header<UserApiResponse> read(Header<ItemApiRequest> id) {
+    public Header<UserApiResponse> read(Long id) {
 
         // id -> repository getOne , getById
         Optional<User> optional = userRepository.findById(id);
@@ -56,6 +56,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
 
     }
+
 
     @Override
     public Header<UserApiResponse> update(Header<UserApiRequest> request) {

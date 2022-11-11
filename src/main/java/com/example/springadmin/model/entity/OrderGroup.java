@@ -41,7 +41,7 @@ public class OrderGroup {
 
     private Integer totalQuantity;
 
-    private LocalDateTime OrderAt;
+    private LocalDateTime orderAt;
 
     private LocalDateTime arrivalDate;
 
