@@ -1,5 +1,6 @@
 package com.example.springadmin.model.entity;
 
+import com.example.springadmin.model.enumclass.ItemStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -27,7 +28,8 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ItemStatus status;  // 등록 / 해지 / 경수중
 
     private String name;
 
