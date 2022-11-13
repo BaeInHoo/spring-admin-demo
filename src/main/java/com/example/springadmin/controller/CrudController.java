@@ -2,11 +2,12 @@ package com.example.springadmin.controller;
 
 import com.example.springadmin.controller.ifs.CrudInterface;
 import com.example.springadmin.model.network.Header;
+import com.example.springadmin.service.BaseService;
 import org.springframework.web.bind.annotation.*;
 
 public abstract class CrudController<Req, Res> implements CrudInterface<Req, Res> {
 
-    protected CrudInterface<Req, Res> baseService;
+    protected BaseService<Req, Res> baseService;
 
     @Override
     @PostMapping("")
