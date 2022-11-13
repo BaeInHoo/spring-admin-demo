@@ -2,6 +2,7 @@ package com.example.springadmin.controller.api;
 
 import com.example.springadmin.controller.CrudController;
 import com.example.springadmin.controller.ifs.CrudInterface;
+import com.example.springadmin.model.entity.Item;
 import com.example.springadmin.model.network.Header;
 import com.example.springadmin.model.network.request.ItemApiRequest;
 import com.example.springadmin.model.network.response.ItemApiResponse;
@@ -15,13 +16,6 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @RestController
 @RequestMapping("/api/item")
-public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse> {
+public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse, Item> {
 
-    @Autowired
-    private ItemApiLogicService itemApiLogicService;
-
-    @PostConstruct
-    public void init() {
-        this.baseService = itemApiLogicService;
-    }
 }

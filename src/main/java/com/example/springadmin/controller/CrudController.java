@@ -3,11 +3,15 @@ package com.example.springadmin.controller;
 import com.example.springadmin.controller.ifs.CrudInterface;
 import com.example.springadmin.model.network.Header;
 import com.example.springadmin.service.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-public abstract class CrudController<Req, Res> implements CrudInterface<Req, Res> {
+@Component
+public abstract class CrudController<Req, Res, Entity> implements CrudInterface<Req, Res> {
 
-    protected BaseService<Req, Res> baseService;
+    @Autowired(required = false)
+    protected BaseService<Req, Res, Entity> baseService;
 
     @Override
     @PostMapping("")
