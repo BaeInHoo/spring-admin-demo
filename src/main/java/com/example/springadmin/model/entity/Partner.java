@@ -1,5 +1,6 @@
 package com.example.springadmin.model.entity;
 
+import com.example.springadmin.model.enumclass.PartnerStatus;
 import jdk.dynalink.linker.LinkerServices;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -29,7 +30,8 @@ public class Partner {
 
     private String name;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private PartnerStatus status;
 
     private String address;
 
